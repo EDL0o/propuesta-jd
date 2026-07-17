@@ -81,6 +81,8 @@ html.static [style*="animation"]{animation:none !important;opacity:1 !important;
 .drawer{position:fixed;inset:0;z-index:75;background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:var(--gutter);transform:translateY(-100%);transition:transform .4s var(--ease);visibility:hidden}
 .drawer.open{transform:none;visibility:visible}
 .drawer a{font-family:var(--head);font-weight:700;font-size:1.6rem;color:#fff;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.drawer .drawer__cta{font-size:1.05rem;margin-top:28px;justify-content:center;border-bottom:none;color:var(--navy-3)}
+a{-webkit-tap-highlight-color:transparent}
 .open ~ * .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 @media(max-width:960px){.nav,.header .btn,.lang{display:none}.burger{display:flex}}
 
@@ -195,6 +197,87 @@ html.static [style*="animation"]{animation:none !important;opacity:1 !important;
 .footer a:hover{color:var(--blue)}
 .footer__bottom{margin-top:46px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.8rem;color:rgba(255,255,255,.45)}
 @media(max-width:760px){.footer__grid{grid-template-columns:1fr 1fr}}
+
+/* ============ DISEÑO MÓVIL — cada sección pensada para teléfono ============ */
+.d-mob{display:none}
+@media(max-width:640px){
+  .d-desk{display:none}
+  .d-mob{display:inline}
+  :root{--secy:60px;--gutter:20px}
+  [id]{scroll-margin-top:80px}
+
+  /* Header compacto */
+  .header{height:66px}
+  .header__logo img{height:25px}
+
+  /* HERO: jerarquía limpia, sin quiebres raros */
+  .hero{padding-top:66px}
+  .hero .eyebrow{font-size:.66rem;letter-spacing:.14em;line-height:1.6}
+  .hero .eyebrow::before{display:none}
+  .hero h1{font-size:clamp(2rem,8.8vw,2.55rem);max-width:none;line-height:1.06}
+  .hero__sub{font-size:1rem;line-height:1.6}
+  .hero__cta{margin-top:26px}
+  .hero__cta .btn{padding:17px 30px;font-size:1rem}
+  /* Stats: tarjeta de vidrio con 3 columnas parejas */
+  .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:30px;background:rgba(255,255,255,.06);border:1px solid rgba(79,184,231,.25);border-radius:16px;padding:16px 6px;backdrop-filter:blur(6px)}
+  .stat{border-left:none;padding:0 10px;text-align:center}
+  .stat + .stat{border-left:1px solid rgba(79,184,231,.25)}
+  .stat b{font-size:1.45rem;justify-content:center}
+  .stat span{font-size:.66rem;line-height:1.35;max-width:none;margin-top:5px}
+  .hero__scroll{display:none !important}
+
+  /* Tipografía de secciones */
+  .h2{font-size:clamp(1.6rem,7vw,2rem)}
+  .h2 br{display:none}
+  .lead{font-size:.96rem}
+
+  /* Certificaciones: fila compacta y centrada */
+  .certs{padding:20px 0}
+  .certs .container{flex-direction:column;align-items:center;gap:14px}
+  .certs__label{font-size:.66rem}
+  .certs__row{justify-content:center;gap:18px 24px}
+  .certs__row img{height:30px;filter:none;opacity:.9}
+
+  /* Servicios: tarjeta horizontal (icono junto al título) */
+  .svc{gap:14px;margin-top:30px}
+  .card{padding:22px 20px;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:14px;row-gap:10px}
+  .card__icon{width:46px;height:46px;border-radius:13px}
+  .card__icon svg{width:23px;height:23px}
+  .card h3{font-size:1.05rem}
+  .card p{grid-column:1/-1;font-size:.92rem;margin:0}
+  .card__link{grid-column:1/-1;font-size:.86rem;padding-top:2px}
+
+  /* SILA */
+  .sila ul{gap:11px;margin-top:22px}
+  .sila li{font-size:.92rem}
+  .sila .btn{width:100%;justify-content:center;margin-top:26px}
+  .sila__visual{margin-top:8px}
+
+  /* Valores 2×2 compacto */
+  .vals{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px;margin-top:30px}
+  .val{padding:20px 14px}
+  .val h3{font-size:.98rem}
+  .val p{font-size:.8rem}
+
+  /* Nosotros */
+  .about__img{aspect-ratio:16/10}
+  .about li{font-size:.92rem}
+
+  /* Presencia */
+  .loc{gap:14px;margin-top:20px}
+  .loc h4{font-size:.72rem}
+  .loc li{font-size:.9rem}
+
+  /* CTA final */
+  .ctaf__btns{margin-top:26px}
+  .ctaf__btns .btn{width:100%;justify-content:center}
+
+  /* Footer apilado y centrado en lo esencial */
+  .footer{padding:46px 0 20px;font-size:.9rem}
+  .footer__grid{gap:26px}
+  .footer img.flogo{height:30px}
+  .footer__bottom{flex-direction:column;gap:6px;text-align:center;margin-top:34px}
+}
 </style>
 </head>
 <body>
@@ -222,13 +305,16 @@ html.static [style*="animation"]{animation:none !important;opacity:1 !important;
   <a href="#nosotros">Nosotros</a>
   <a href="#presencia">Presencia</a>
   <a href="#contacto">Contacto</a>
+  <a class="btn drawer__cta" href="#contacto">Cotiza tu operación
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
 </nav>
 
 <section class="hero" id="top">
   <div class="hero__media"><img src="assets/DSC4962-1.jpg" alt="Centro de operaciones JD Group"></div>
   <div class="hero__scrim"></div>
   <div class="container hero__inner">
-    <span class="eyebrow" style="animation:fadeUp .7s var(--ease) both .15s">Logística binacional · México – Estados Unidos</span>
+    <span class="eyebrow" style="animation:fadeUp .7s var(--ease) both .15s">Logística binacional · <span class="d-desk">México – Estados Unidos</span><span class="d-mob">MX – US</span></span>
     <h1 style="animation:fadeUp .9s var(--ease) both .3s">Tu carga cruza fronteras.<br>Tu operación <em>no se detiene</em>.</h1>
     <p class="hero__sub" style="animation:fadeUp .9s var(--ease) both .45s">Servicios integrales de logística y agencia aduanal para la industria de manufactura y comercio: despacho, almacenaje, transporte y tecnología en una sola mano.</p>
     <div class="hero__cta" style="animation:fadeUp .9s var(--ease) both .6s">
@@ -239,8 +325,8 @@ html.static [style*="animation"]{animation:none !important;opacity:1 !important;
     </div>
     <div class="stats" style="animation:fadeIn 1.1s ease both .85s">
       <div class="stat"><b><span data-count="25">0</span><small>+</small></b><span>años de experiencia</span></div>
-      <div class="stat"><b><span data-count="500">0</span><small>K+</small></b><span>operaciones al año</span></div>
-      <div class="stat"><b><span data-count="99">0</span><small>%</small></b><span>de precisión en despachos</span></div>
+      <div class="stat"><b><span data-count="500">0</span><small>K+</small></b><span><span class="d-desk">operaciones al año</span><span class="d-mob">operaciones al año</span></span></div>
+      <div class="stat"><b><span data-count="99">0</span><small>%</small></b><span><span class="d-desk">de precisión en despachos</span><span class="d-mob">precisión en despachos</span></span></div>
     </div>
   </div>
   <span class="hero__scroll" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
