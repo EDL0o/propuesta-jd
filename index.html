@@ -144,7 +144,7 @@ a{-webkit-tap-highlight-color:transparent}
 .sila__visual{position:relative}
 .sila__visual::before{content:"";position:absolute;inset:12% 6%;background:radial-gradient(closest-side,rgba(79,184,231,.35),transparent 70%);filter:blur(30px)}
 .sila__visual img{position:relative;animation:floaty 5s ease-in-out infinite;filter:drop-shadow(0 40px 60px rgba(0,0,0,.5))}
-.sila .btn{margin-top:30px}
+.sila__btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
 @media(max-width:900px){.sila .container{grid-template-columns:1fr}}
 
 /* VALUES */
@@ -250,7 +250,8 @@ a{-webkit-tap-highlight-color:transparent}
   /* SILA */
   .sila ul{gap:11px;margin-top:22px}
   .sila li{font-size:.92rem}
-  .sila .btn{width:100%;justify-content:center;margin-top:26px}
+  .sila__btns{margin-top:24px;gap:11px}
+  .sila .btn{width:100%;justify-content:center}
   .sila__visual{margin-top:8px}
 
   /* Valores 2×2 compacto */
@@ -407,7 +408,12 @@ a{-webkit-tap-highlight-color:transparent}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Precisión garantizada en la documentación aduanal</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Menos carga administrativa para toda tu cadena</li>
       </ul>
-      <a class="btn" href="#contacto">Solicitar demo de SILA</a>
+      <div class="sila__btns">
+        <a class="btn" href="https://id.jdgroup.net/login?return_url=https://sila.jdgroup.net/MainSila/General/Catalogos/default.aspx" target="_blank" rel="noopener">Entrar a SILA
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#contacto">Solicitar una demo</a>
+      </div>
     </div>
     <div class="sila__visual" data-reveal data-delay="120">
       <img src="assets/Group-188.png" alt="Plataforma SILA">
